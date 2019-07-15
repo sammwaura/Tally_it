@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#3f51b5</color>
+    <color name="colortext">#100b20</color>
+    <color name="colorhint">#a9aaac</color>
+    <color name="colortextMenu">#444a59</color>
+    <color name="colorBg">#80444a59</color>
+    <color name="colorbg">#ffffff</color>
+    <color name="btcolorbg">#C5C7CC</color>
+    <color name="background_line">#444a59</color>
+
+    <color name="white">#dde6ec</color>
+    <color name="blue">#7ec4ed</color>
+    <color name="yellow">#d0fc7d</color>
+    <color name="pink">#ed579a</color>
+    <color name="green">#2aed76</color>
+
+    <array name="demo_colors">
+        <item>@color/white</item>
+        <item>@color/blue</item>
+        <item>@color/yellow</item>
+        <item>@color/pink</item>
+        <item>@color/green</item>
+    </array>
+</resources>

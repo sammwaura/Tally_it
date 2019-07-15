@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <customfonts.MyEditText
+        android:id="@+id/category_name_edit"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_marginLeft="46dp"
+        android:inputType="textCapWords"
+        android:textColorHint="@color/colorhint"
+        android:textColor="@color/colortext"
+        android:background="#0000"
+        android:padding="16dp"
+        android:gravity="left"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="#dad8d8"/>
+
+    <customfonts.MyEditText
+        android:id="@+id/category_name_amount"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount Owed"
+        android:layout_marginLeft="46dp"
+        android:inputType="textCapWords"
+        android:textColorHint="@color/colorhint"
+        android:textColor="@color/colortext"
+        android:background="#0000"
+        android:padding="16dp"
+        android:gravity="left"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#dad8d8"/>
+
+    <customfonts.MyEditText
+        android:id="@+id/category_name_quantity"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter quantity"
+        android:layout_marginLeft="46dp"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorhint"
+        android:textColor="@color/colortext"
+        android:background="#0000"
+        android:padding="16dp"
+        android:gravity="left"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#dad8d8"/>
+    <customfonts.MyEditText
+        android:id="@+id/debtor_date"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Date"
+        android:layout_marginLeft="46dp"
+        android:inputType="textCapWords"
+        android:textColorHint="@color/colorhint"
+        android:textColor="@color/colortext"
+        android:background="#0000"
+        android:padding="16dp"
+        android:gravity="left"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#dad8d8"/>
+    <customfonts.MyEditText
+        android:id="@+id/stock_name"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Stock Name"
+        android:layout_marginLeft="46dp"
+        android:inputType="textCapWords"
+        android:textColorHint="@color/colorhint"
+        android:textColor="@color/colortext"
+        android:background="#0000"
+        android:padding="16dp"
+        android:gravity="left"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#dad8d8"/>
+
+</LinearLayout>

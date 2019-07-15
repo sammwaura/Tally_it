@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ws.wolfsoft.creative">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/tally_app"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".PrintAll" />
+        <activity android:name=".SalesPrintActivity" />
+        <activity android:name=".PrintingOptions" />
+        <activity android:name=".LowstockActivity" />
+        <activity android:name=".DebtorValue" />
+        <activity android:name=".StockValue" />
+        <activity android:name=".BankingHealth" />
+        <activity android:name=".BusinessHealth" />
+        <activity android:name=".DetailsGoodsPerformance" />
+        <activity
+            android:name=".Statistics"
+            android:parentActivityName=".Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Statistics" />
+        </activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".AddSubCategory" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Signin" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".PettyCash" />
+        <activity android:name=".Signup" />
+        <activity android:name=".AddBusiness" />
+        <activity android:name=".AddEmployees" />
+        <activity android:name=".AddCategories" />
+        <activity android:name=".AddStock" />
+        <activity android:name=".ExpenseCategory" />
+        <activity android:name=".Home" />
+        <activity android:name=".ViewEmployees" />
+        <activity android:name=".ViewCategories" />
+        <activity android:name=".No_Internet" />
+        <activity
+            android:name=".ViewStock"
+            android:theme="@style/UpdateTheme" />
+        <activity android:name=".AddExpenses" />
+        <activity android:name=".AddCreditors" />
+        <activity android:name=".ViewCreditors" />
+        <activity android:name=".ViewDebtors" />
+        <activity android:name=".ViewExpenses" />
+        <activity
+            android:name=".Sales"
+            android:theme="@style/UpdateTheme" />
+        <activity android:name=".ExpenseRecords" />
+        <activity
+            android:name=".DetailSales"
+            android:parentActivityName=".Sales">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Sales" />
+        </activity>
+        <activity
+            android:name=".DetailExpense"
+            android:parentActivityName=".ExpenseRecords">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ExpenseRecords" />
+        </activity>
+        <activity android:name=".Profits" />
+        <activity
+            android:name=".DetailProfits"
+            android:parentActivityName=".Profits">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Profits" />
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:parentActivityName=".Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
+        <activity
+            android:name=".ViewSubCategories"
+            android:theme="@style/UpdateTheme" />
+        <activity android:name=".Mpesa" />
+        <activity android:name=".AddSubSubCategory" />
+        <activity
+            android:name=".ViewSubSubCategories"
+            android:theme="@style/UpdateTheme" />
+        <activity android:name=".ViewBanking" />
+        <activity android:name=".AddBankers" />
+        <activity
+            android:name=".BusinessSettings"
+            android:parentActivityName=".Settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Settings" />
+        </activity>
+        <activity android:name=".ViewOwnerList" />
+        <activity
+            android:name=".StockSettings"
+            android:parentActivityName=".Settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Settings" />
+        </activity>
+        <activity android:name=".OthersSettings" />
+        <activity
+            android:name=".ViewStockCategories"
+            android:theme="@style/UpdateTheme" />
+        <activity android:name=".ViewStock2" />
+        <activity android:name=".SalesRatings" />
+        <activity android:name=".RecordExpense" />
+        <activity android:name=".GoodsPerformance" />
+        <activity android:name=".Loss" />
+        <activity android:name=".ViewReplacement" />
+        <activity android:name=".ViewDebtorBreakdown" />
+        <activity
+            android:name=".InsertActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/InsertTheme" />
+        <activity android:name=".UpdateActivity" />
+        <activity
+            android:name=".MainNotesActivity"
+            android:theme="@style/AppThemeNote" />
+        <activity android:name=".EmployeeSales" />
+        <activity android:name=".PrintDebtors"></activity>
+    </application>
+
+</manifest>

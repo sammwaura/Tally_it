@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:ns3="http://schemas.android.com/apk/res-auto"
+    xmlns:ns4="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/card"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="5dp"
+        ns3:cardCornerRadius="8.7dp"
+        ns4:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                            <customfonts.MyTextView_SF_Pro_Display_Medium
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginBottom="3dp"
+                                android:letterSpacing="0.093"
+                                android:text="Product Name"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12.7sp"
+                                android:id="@+id/name"
+                                android:textStyle="normal|bold" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:layout_height="wrap_content">
+                            <customfonts.MyTextView_SF_Pro_Display_Medium
+                                android:id="@+id/total_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:letterSpacing="0.093"
+                                android:text="Amount Paid: Ksh 452343"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12.7sp" />
+                    </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                            <customfonts.MyTextView_SF_Pro_Display_Medium
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginBottom="3dp"
+                                android:letterSpacing="0.093"
+                                android:text="Product Name"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12.7sp"
+                                android:visibility="invisible"
+                                android:id="@+id/name2"
+                                android:textStyle="normal|bold" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:layout_height="wrap_content">
+                            <customfonts.MyTextView_SF_Pro_Display_Medium
+                                android:id="@+id/total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:letterSpacing="0.093"
+                                android:text="Total: Ksh 452343"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12.7sp" />
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                            <customfonts.MyTextView_SF_Pro_Display_Medium
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginBottom="3dp"
+                                android:letterSpacing="0.093"
+                                android:text="Product Name"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12.7sp"
+                                android:visibility="invisible"
+                                android:id="@+id/name22"
+                                android:textStyle="normal|bold" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:layout_height="wrap_content">
+                            <customfonts.MyTextView_SF_Pro_Display_Medium
+                                android:id="@+id/balance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:letterSpacing="0.093"
+                                android:text="Balance: Ksh 452343"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12.7sp" />
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

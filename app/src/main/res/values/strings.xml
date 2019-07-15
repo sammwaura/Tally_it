@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">tally.it</string>
+    <string name="sign_in">Sign In</string>
+    <string name="tally_for_small_business">tally.it</string>
+    <string name="welcome">Welcome</string>
+    <string name="the_best_tool_for_running_your_business">The best tool for running your business</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_size">16dp</string>
+    <string name="period" translatable="false">%1$s – %2$s</string>
+    <string name="debtor_value">Debtor Value</string>
+    <string name="_0_debtors">0 debtors</string>
+    <string name="to_do">To do</string>
+    <string name="enter_note">Enter a note...</string>
+    <string name="save">save</string>
+    <!--<string name="date">date</string>-->
+    <string name="title_activity_display_entries">DisplayEntriesActivity</string>
+    <string name="date">14th May 2019</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+</resources>

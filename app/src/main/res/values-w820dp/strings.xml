@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in">Sign In</string>
+    <string name="tally_for_small_business">Tally for Small Business</string>
+    <string name="welcome">Welcome</string>
+</resources>

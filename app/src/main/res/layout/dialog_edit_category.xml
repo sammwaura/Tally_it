@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <customfonts.MyEditText
+        android:id="@+id/category_name_edit"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:layout_marginLeft="46dp"
+        android:inputType="textCapWords"
+        android:textColorHint="@color/colorhint"
+        android:textColor="@color/colortext"
+        android:background="#0000"
+        android:padding="16dp"
+        android:gravity="left"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="#dad8d8"/>
+
+    <Spinner
+        android:id="@+id/spinnerType"
+        android:layout_width="match_parent"
+        android:paddingTop="16dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="6dp"
+        android:gravity="left"
+        android:background="#20ffffff"
+        android:layout_marginLeft="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_marginBottom="1dp"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#dad8d8"/>
+
+</LinearLayout>
