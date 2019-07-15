@@ -226,8 +226,8 @@ public class ViewStockCategories extends AppCompatActivity  implements CategoryA
     @Override
     public void onCardClicked(int pos, String name, List <Category> postFiltered) {
         Intent it = new Intent(ViewStockCategories.this, ViewSubCategories.class);
-        it.putExtra("category_id", category.get(pos).category_id);
-        it.putExtra("category_name", category.get(pos).name);
+        it.putExtra("category_id", postFiltered.get(pos).category_id);
+        it.putExtra("category_name", postFiltered.get(pos).name);
         it.putExtra("type", "is_drawer");
         startActivity(it);
     }
