@@ -10,6 +10,6 @@ import beans.Stock;
 
 public interface StockIObserver {
     // change signature of method as per your need
-    void onCardClicked(int posi, String name,  List <Stock> stockFiltered);
+    void onCardClicked(int pos, String name);
 
 }

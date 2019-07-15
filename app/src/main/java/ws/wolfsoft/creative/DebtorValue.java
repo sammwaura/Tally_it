@@ -250,7 +250,7 @@ public class DebtorValue extends AppCompatActivity implements CategoryIObserver 
     }
 
     @Override
-    public void onCardClicked(int pos, String name) {
+    public void onCardClicked(int pos, String name, List <Category> postFiltered) {
         Intent it = new Intent(DebtorValue.this, ViewDebtorBreakdown.class);
         it.putExtra("category_id", category.get(pos).category_id);
         System.out.println("++++++++++++++++++++++++ "+category.get(pos).category_id);
@@ -258,6 +258,7 @@ public class DebtorValue extends AppCompatActivity implements CategoryIObserver 
         it.putExtra("type", "is_drawer");
         startActivity(it);
     }
+
 }
 
 

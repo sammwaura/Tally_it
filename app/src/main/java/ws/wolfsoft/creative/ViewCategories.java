@@ -200,7 +200,7 @@ public class ViewCategories extends AppCompatActivity implements CategoryIObserv
     }
 
     @Override
-    public void onCardClicked(final int pos, String name) {
+    public void onCardClicked(final int pos, String name, List <Category> postFiltered) {
         dialogBuilder = NiftyDialogBuilder.getInstance(ViewCategories.this);
         dialogBuilder
                 .withTitle("Edit Categories")
@@ -263,6 +263,7 @@ public class ViewCategories extends AppCompatActivity implements CategoryIObserv
 
         dialogBuilder.show();
     }
+
 
     private void editCategory(final String category_id, final String name, final String type) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, edit_category,

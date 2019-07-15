@@ -83,7 +83,7 @@ public class DebtorValueAdapter extends RecyclerView.Adapter<DebtorValueAdapter.
                 }
                 else
                 {
-                    mObserver.onCardClicked(posi,  name_tapped);
+                    mObserver.onCardClicked(posi,  name_tapped, post);
                 }
 
             }

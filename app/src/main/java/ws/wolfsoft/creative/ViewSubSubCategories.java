@@ -437,12 +437,17 @@ public class ViewSubSubCategories extends AppCompatActivity implements SubCatego
     }
 
     @Override
-    public void onCardClicked(final int pos, String name) {
+    public void onCardClicked(int pos, String name, List <Category> postFiltered) {
         Intent it = new Intent(ViewSubSubCategories.this, ViewStock.class);
         it.putExtra("category_id", category.get(pos).category_id);
         it.putExtra("category_name", category.get(pos).name);
         it.putExtra("type", "is_drawer");
         startActivity(it);
+    }
+
+    @Override
+    public void onCardClicked(final int pos, String name) {
+
     }
 
     public void refreshActivity() {

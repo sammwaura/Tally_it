@@ -1,6 +1,5 @@
 package ws.wolfsoft.creative;
 
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,8 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,7 +38,6 @@ import java.util.Objects;
 
 import adapter.MySpinnerAdapterOther;
 import adapter.StockAdapter;
-import beans.Category;
 import beans.Stock;
 import iobserver.StockIObserver;
 
@@ -54,7 +50,7 @@ import static ws.wolfsoft.creative.Constants.get_categories;
 import static ws.wolfsoft.creative.Constants.get_stock;
 import static ws.wolfsoft.creative.Constants.get_sub_categories;
 
-public class ViewStock extends AppCompatActivity implements StockAdapter.AdapterListener,StockIObserver{
+public class ViewStock extends AppCompatActivity implements StockIObserver {
 
     private SharedPreferences credentialsSharedPreferences;
     public List<Stock> stock;
@@ -65,9 +61,6 @@ public class ViewStock extends AppCompatActivity implements StockAdapter.Adapter
     private NiftyDialogBuilder dialogBuilder;
     private List<String> dataset1;
     String categoryName,categoryId;
-    private SearchView searchView;
-    public List <Stock> stockFiltered;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +72,11 @@ public class ViewStock extends AppCompatActivity implements StockAdapter.Adapter
 
         credentialsSharedPreferences = getSharedPreferences(CREDENTIALSPREFERENCES, Context.MODE_PRIVATE);
         stock = new ArrayList<>();
-        stockFiltered = new ArrayList <>();
 
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
         stock_number_head = findViewById(R.id.head2);
-
 
         findViewById(R.id.fab_add).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +110,6 @@ public class ViewStock extends AppCompatActivity implements StockAdapter.Adapter
         }
 
         categoryId =getIntent().getExtras().getString("category_id");
-        System.out.println("viewstockcategoryIdcategoryId "+categoryId);
         categoryName =getIntent().getExtras().getString("category_name");
 
         getAllStock(categoryId);
@@ -219,129 +209,111 @@ public class ViewStock extends AppCompatActivity implements StockAdapter.Adapter
         requestQueue.add(stringRequest);
     }
 
+
+
+
+
     private void initializeData() {
-        stockAdapter = new StockAdapter(this, stockFiltered, this);
+
+        stockAdapter = new StockAdapter( stock);
         rv.setAdapter(stockAdapter);
         stockAdapter.setListener(this);
     }
 
+
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+    public void onCardClicked(final int pos, String name) {
 
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setMaxWidth(Integer.MAX_VALUE);
+        dialogBuilder = NiftyDialogBuilder.getInstance(ViewStock.this);
+        dialogBuilder
+                .withTitle("Edit Stock")
+                .withTitleColor("#303f9f")                                  //def
+                .withDividerColor("#3f51b5")                              //def//.withMessage(null)  no Msg
+                .withMessageColor("#00B873")                              //def  | withMessageColor(int resid)
+                .withDialogColor("#FFFFFF")                               //def  | withDialogColor(int resid)
+                .withDuration(700)
+                .isCancelableOnTouchOutside(false)
+                .isCancelable(false)
+                .withEffect(Effectstype.Newspager)
+                .withButton2Text("CANCEL")//def Effectstype.Slidetop
+                .withButton1Text("EDIT")
+                .setCustomView(R.layout.dialog_edit_stock, ViewStock.this)//def gone//def gone
+                .isCancelableOnTouchOutside(true)
+                .setButton2Click(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogBuilder.dismiss();
+                    }
+                })
+                .setButton1Click(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                                         final EditText stock_name =  dialogBuilder.findViewById(R.id.stock_name);
+                                         final EditText quantity =  dialogBuilder.findViewById(R.id.quantity);
+                                         final Spinner spinnerTypeCat =  dialogBuilder.findViewById(R.id.spinnerTypeCat);
+                                         final EditText buyingPrice =  dialogBuilder.findViewById(R.id.buying_price);
+                                         final Spinner spinnerTypeUnit =  dialogBuilder.findViewById(R.id.spinnerTypeUnit);
+                                         editStock(stock_name.getText().toString(),quantity.getText().toString(),spinnerTypeCat.getSelectedItem().toString(),buyingPrice.getText().toString(),spinnerTypeUnit.getSelectedItem().toString(),stock.get(pos).id);
+                                     }
+                                 }
+                );
+
+        final EditText stock_name =  dialogBuilder.findViewById(R.id.stock_name);
+        final Button delete =  dialogBuilder.findViewById(R.id.button);
+
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                ((StockAdapter)stockAdapter).getFilter().filter(s);
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newtext) {
-                ((StockAdapter)stockAdapter).getFilter().filter(newtext);
-
-                return false;
+            public void onClick(View v) {
+                //Toast.makeText(getApplicationContext(),"Deleting",Toast.LENGTH_LONG).show();
+                deleteStock(stock.get(pos).id);
             }
         });
-        return true;
+
+        final EditText quantity =  dialogBuilder.findViewById(R.id.quantity);
+        final Spinner spinnerTypeCat =  dialogBuilder.findViewById(R.id.spinnerTypeCat);
+        final EditText buyingPrice =  dialogBuilder.findViewById(R.id.buying_price);
+        dataset = new ArrayList<>();
+        dataset.add("Select Category");
+        getAllCategory(spinnerTypeCat,stock,pos);
+
+
+        final Spinner spinnerTypeUnit =  dialogBuilder.findViewById(R.id.spinnerTypeUnit);
+
+        List<String> dataset2 = new ArrayList<>();
+        dataset2.add("Select Unit");
+        dataset2.add("kilogrammes");
+        dataset2.add("tonnes");
+        dataset2.add("grammes");
+        dataset2.add("liters");
+        dataset2.add("meter square");
+        dataset2.add("meters");
+        dataset2.add("inches");
+        dataset2.add("centimeters");
+        dataset2.add("sets");
+        dataset2.add("cartons");
+        dataset2.add("trays");
+        dataset2.add("pieces");
+
+        MySpinnerAdapterOther<String> adapter2 = new MySpinnerAdapterOther<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                dataset2);
+        spinnerTypeUnit.setAdapter(adapter2);
+        String metric = stock.get(pos).metric;
+        ArrayAdapter myAdap = (ArrayAdapter) spinnerTypeUnit.getAdapter(); //cast to an ArrayAdapter
+
+        int spinnerPosition = myAdap.getPosition(metric);
+
+        //set the default according to value
+        spinnerTypeUnit.setSelection(spinnerPosition);
+
+        stock_name.setText(stock.get(pos).name.split("-")[0]);
+        quantity.setText(stock.get(pos).quantity);
+        buyingPrice.setText(stock.get(pos).buying_price);
+        dialogBuilder.show();
     }
-    @Override
-    public void onCardClicked(final int posi, String name, List <Stock> stockFiltered) {
-            dialogBuilder = NiftyDialogBuilder.getInstance(ViewStock.this);
-            dialogBuilder
-                    .withTitle("Edit Stock")
-                    .withTitleColor("#303f9f")                                  //def
-                    .withDividerColor("#3f51b5")                              //def//.withMessage(null)  no Msg
-                    .withMessageColor("#00B873")                              //def  | withMessageColor(int resid)
-                    .withDialogColor("#FFFFFF")                               //def  | withDialogColor(int resid)
-                    .withDuration(700)
-                    .isCancelableOnTouchOutside(false)
-                    .isCancelable(false)
-                    .withEffect(Effectstype.Newspager)
-                    .withButton2Text("CANCEL")//def Effectstype.Slidetop
-                    .withButton1Text("EDIT")
-                    .setCustomView(R.layout.dialog_edit_stock, ViewStock.this)//def gone//def gone
-                    .isCancelableOnTouchOutside(true)
-                    .setButton2Click(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialogBuilder.dismiss();
-                        }
-                    })
-                    .setButton1Click(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-
-                                             final EditText stock_name =  dialogBuilder.findViewById(R.id.stock_name);
-                                             final EditText quantity =  dialogBuilder.findViewById(R.id.quantity);
-                                             final Spinner spinnerTypeCat =  dialogBuilder.findViewById(R.id.spinnerTypeCat);
-                                             final EditText buyingPrice =  dialogBuilder.findViewById(R.id.buying_price);
-                                             final Spinner spinnerTypeUnit =  dialogBuilder.findViewById(R.id.spinnerTypeUnit);
-                                             editStock(stock_name.getText().toString(),quantity.getText().toString(),spinnerTypeCat.getSelectedItem().toString(),buyingPrice.getText().toString(),spinnerTypeUnit.getSelectedItem().toString(),stock.get(posi).id);
-                                         }
-                                     }
-                    );
-
-            final EditText stock_name =  dialogBuilder.findViewById(R.id.stock_name);
-            final Button delete =  dialogBuilder.findViewById(R.id.button);
-
-            delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Toast.makeText(getApplicationContext(),"Deleting",Toast.LENGTH_LONG).show();
-                    deleteStock(stock.get(posi).id);
-                }
-            });
-
-            final EditText quantity =  dialogBuilder.findViewById(R.id.quantity);
-            final Spinner spinnerTypeCat =  dialogBuilder.findViewById(R.id.spinnerTypeCat);
-            final EditText buyingPrice =  dialogBuilder.findViewById(R.id.buying_price);
-            dataset = new ArrayList<>();
-            dataset.add("Select Category");
-            getAllCategory(spinnerTypeCat,stock,posi);
-
-
-            final Spinner spinnerTypeUnit =  dialogBuilder.findViewById(R.id.spinnerTypeUnit);
-
-            List<String> dataset2 = new ArrayList<>();
-            dataset2.add("Select Unit");
-            dataset2.add("kilogrammes");
-            dataset2.add("tonnes");
-            dataset2.add("grammes");
-            dataset2.add("liters");
-            dataset2.add("meter square");
-            dataset2.add("meters");
-            dataset2.add("inches");
-            dataset2.add("centimeters");
-            dataset2.add("sets");
-            dataset2.add("cartons");
-            dataset2.add("trays");
-            dataset2.add("pieces");
-
-            MySpinnerAdapterOther<String> adapter2 = new MySpinnerAdapterOther<>(
-                    this,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    dataset2);
-            spinnerTypeUnit.setAdapter(adapter2);
-            String metric = stock.get(posi).metric;
-            ArrayAdapter myAdap = (ArrayAdapter) spinnerTypeUnit.getAdapter(); //cast to an ArrayAdapter
-
-            int spinnerPosition = myAdap.getPosition(metric);
-
-            //set the default according to value
-            spinnerTypeUnit.setSelection(spinnerPosition);
-
-            stock_name.setText(stockFiltered.get(posi).name);
-            quantity.setText(stockFiltered.get(posi).quantity);
-            buyingPrice.setText(stockFiltered.get(posi).buying_price);
-            dialogBuilder.show();
-        }
-
 
     private void deleteStock(final String id) {
         System.out.println("HEREHERE");
@@ -721,8 +693,6 @@ public class ViewStock extends AppCompatActivity implements StockAdapter.Adapter
                 params.put("category_id", category_id);
                 params.put("name", name);
                 params.put("sub_category", sub_category);
-
-
                 //returning parameters
                 return params;
             }
@@ -743,18 +713,4 @@ public class ViewStock extends AppCompatActivity implements StockAdapter.Adapter
         it.putExtra("type", "is_drawer");
         startActivity(it);
     }
-
-
-    @Override
-    public void onCardClicked(int pos, String name) {
-
-    }
-
-    @Override
-    public void onCategorySelected(Category category) {
-
-    }
-
-
-
 }

@@ -95,7 +95,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         categoryViewHolder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                            mObserver.onCardClicked(posi,  name_tapped);
+                            mObserver.onCardClicked(posi,  name_tapped, postFiltered);
             }
         });
 

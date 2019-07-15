@@ -108,7 +108,7 @@ public class ViewStockCategories extends AppCompatActivity  implements CategoryA
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        System.out.println("sssssssssssssssssssssssssssssssssssss " + s);
+                        System.out.println("sssssssssssssssssssssssssssssssssssss%%%%% " + s);
                         if(s!=null)
                         {
                             JSONArray array = null;
@@ -224,14 +224,19 @@ public class ViewStockCategories extends AppCompatActivity  implements CategoryA
     }
 
     @Override
-    public void onCardClicked(final int pos, String name) {
-
+    public void onCardClicked(int pos, String name, List <Category> postFiltered) {
         Intent it = new Intent(ViewStockCategories.this, ViewSubCategories.class);
         it.putExtra("category_id", category.get(pos).category_id);
         it.putExtra("category_name", category.get(pos).name);
         it.putExtra("type", "is_drawer");
         startActivity(it);
     }
+
+    @Override
+    public void onCardClicked(int pos, String name) {
+
+    }
+
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

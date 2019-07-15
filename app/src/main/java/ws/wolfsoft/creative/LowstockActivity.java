@@ -51,7 +51,7 @@ import static ws.wolfsoft.creative.Constants.get_categories;
 import static ws.wolfsoft.creative.Constants.get_low_stock;
 import static ws.wolfsoft.creative.Constants.get_sub_categories;
 
-public  class LowstockActivity extends AppCompatActivity  implements StockIObserver, StockAdapter.AdapterListener {
+public  class LowstockActivity extends AppCompatActivity  implements StockIObserver {
 
     private SharedPreferences credentialsSharedPreferences;
     public List<Stock> stock;
@@ -182,7 +182,7 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
 
     private void initializeData() {
 
-        stockAdapter = new StockAdapter(this, stock, this);
+        stockAdapter = new StockAdapter(stock);
         rv.setAdapter(stockAdapter);
         stockAdapter.setListener(this);
     }
@@ -681,13 +681,5 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
         startActivity(it);
     }
 
-    @Override
-    public void onCategorySelected(Category category) {
 
-    }
-
-    @Override
-    public void onCardClicked(int posi, String name, List <Stock> stockFiltered) {
-
-    }
 }
