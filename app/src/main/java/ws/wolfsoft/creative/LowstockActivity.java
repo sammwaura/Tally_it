@@ -81,6 +81,8 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
 
         stock_number_head = findViewById(R.id.head2);
         getAllLowStock();
+
+
     }
 
     protected void onResume() {

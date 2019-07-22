@@ -20,4 +20,8 @@
     <string name="date">14th May 2019</string>
     <string name="update">update</string>
     <string name="delete">delete</string>
+    <string name="msg_token_fmt" />
+    <string name="default_notification_channel_id" />
+    <string name="fcm_message" />
+    <string name="default_notification_channel_name" />
 </resources>
