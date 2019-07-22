@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,7 +53,7 @@ import static ws.wolfsoft.creative.Constants.get_categories;
 import static ws.wolfsoft.creative.Constants.get_low_stock;
 import static ws.wolfsoft.creative.Constants.get_sub_categories;
 
-public  class LowstockActivity extends AppCompatActivity  implements StockIObserver {
+public  class LowstockActivity extends AppCompatActivity  implements StockIObserver{
 
     private SharedPreferences credentialsSharedPreferences;
     public List<Stock> stock;
@@ -281,6 +283,12 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
         buyingPrice.setText(stock.get(pos).buying_price);
         dialogBuilder.show();
     }
+
+    @Override
+    public void notificationOpened(String message, JSONObject additionalData, boolean isActive) {
+
+    }
+
 
     private void deleteStock(final String id) {
         System.out.println("HEREHERE");
@@ -680,6 +688,4 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
         it.putExtra("type", "is_drawer");
         startActivity(it);
     }
-
-
 }

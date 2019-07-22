@@ -24,7 +24,11 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/AppTheme">
+        <meta-data
+        android:name="com.onesignal.NotificationOpened.DEFAULT"
+        android:value="DISABLE" />
+
         android:usesCleartextTraffic="true">
         <activity android:name=".PrintAll" />
         <activity android:name=".SalesPrintActivity" />
@@ -38,9 +42,7 @@
         <activity
             android:name=".Statistics"
             android:parentActivityName=".Home">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Statistics" />
+
         </activity>
 
         <uses-library
@@ -157,6 +159,15 @@
             android:theme="@style/AppThemeNote" />
         <activity android:name=".EmployeeSales" />
         <activity android:name=".PrintDebtors"></activity>
+
+
+        <service android:name="service.FirebaseInstanceService">
+            <intent-filter>
+                <action android:name="com.google.Firebase.MESSAGING_EVENT">
+
+                </action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

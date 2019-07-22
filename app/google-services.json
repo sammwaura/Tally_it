@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "164683765049",
+    "firebase_url": "https://tallyit-31834.firebaseio.com",
+    "project_id": "tallyit-31834",
+    "storage_bucket": "tallyit-31834.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164683765049:android:fe3466d519291b75",
+        "android_client_info": {
+          "package_name": "ws.wolfsoft.creative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164683765049-s0sq3lba8lioge428jtq5sr9k3lladev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ws.wolfsoft.creative",
+            "certificate_hash": "f0b7e7a0774db05e92338443f3c862bbf26aedfc"
+          }
+        },
+        {
+          "client_id": "164683765049-al8gb9dfkmuoudqc8l4qpg9s33to3l5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKeq0QZzWldY8oEkJ1ZWZQP7lHlEml7EI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164683765049-al8gb9dfkmuoudqc8l4qpg9s33to3l5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

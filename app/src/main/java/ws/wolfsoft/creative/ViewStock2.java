@@ -306,6 +306,11 @@ public  class ViewStock2 extends AppCompatActivity implements StockIObserver {
         dialogBuilder.show();
     }
 
+    @Override
+    public void notificationOpened(String message, JSONObject additionalData, boolean isActive) {
+
+    }
+
     private void deleteStock(final String id) {
         System.out.println("HEREHERE");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, delete_stock,
