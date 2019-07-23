@@ -131,6 +131,10 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
                                             System.out.println("$$%$%$%%%$"+total_stock);
                                             lowStock = total_stock;
                                         }
+
+                                        if (lowStock.length()>3){
+                                                sendNotification();
+                                        }
                                     }
 
 
