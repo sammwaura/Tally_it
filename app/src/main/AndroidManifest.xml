@@ -159,15 +159,6 @@
             android:theme="@style/AppThemeNote" />
         <activity android:name=".EmployeeSales" />
         <activity android:name=".PrintDebtors"></activity>
-
-
-        <service android:name="service.FirebaseInstanceService">
-            <intent-filter>
-                <action android:name="com.google.Firebase.MESSAGING_EVENT">
-
-                </action>
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

@@ -1,8 +1,14 @@
 package ws.wolfsoft.creative;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -64,6 +70,9 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
     private NiftyDialogBuilder dialogBuilder;
     private List<String> dataset1;
     String categoryName,categoryId;
+    private String CHANNEL_ID;
+     String lowStock = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +91,12 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
         stock_number_head = findViewById(R.id.head2);
         getAllLowStock();
 
-
     }
 
     protected void onResume() {
         super.onResume();
         getAllLowStock();
     }
-
 
     private void getAllLowStock() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, get_low_stock,
@@ -119,7 +126,14 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
                                         String buying_price = row.getString("buying_price");
                                         total_stock = row.getString("total_stock");
                                         stock.add(new Stock(id, name,quantity,metric,category, buying_price));
+                                        sendNotification();
+                                        if (total_stock.length()>3){
+                                            System.out.println("$$%$%$%%%$"+total_stock);
+                                            lowStock = total_stock;
+                                        }
                                     }
+
+
 
                                     //TextView head  = findViewById(R.id.head2);
                                     //head.setText(String.format("%s Stock", total_stock));
@@ -180,8 +194,27 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
         requestQueue.add(stringRequest);
     }
 
+    public void sendNotification(){
 
+        Intent intent = new Intent(this, LowstockActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,0);
 
+        //Instance
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.tallyit)
+                .setContentTitle("Low Stock")
+                .setContentText("Stock below 3 products")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify();
+        notificationManager.notify(001, builder.build());
+
+        }
 
 
     private void initializeData() {
