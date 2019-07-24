@@ -127,8 +127,8 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
                                         total_stock = row.getString("total_stock");
                                         stock.add(new Stock(id, name,quantity,metric,category, buying_price));
 
-                                        int stockNum = Integer.parseInt(total_stock);
-                                        if (stockNum<3){
+                                        int quantityNum = Integer.parseInt(quantity);
+                                        if(quantityNum<3){
                                             sendNotification();
                                         }
                                     }
