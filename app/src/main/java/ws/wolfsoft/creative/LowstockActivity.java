@@ -126,14 +126,10 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
                                         String buying_price = row.getString("buying_price");
                                         total_stock = row.getString("total_stock");
                                         stock.add(new Stock(id, name,quantity,metric,category, buying_price));
-                                        sendNotification();
-                                        if (total_stock.length()>3){
-                                            System.out.println("$$%$%$%%%$"+total_stock);
-                                            lowStock = total_stock;
-                                        }
 
-                                        if (lowStock.length()>3){
-                                                sendNotification();
+                                        int stockNum = Integer.parseInt(total_stock);
+                                        if (stockNum<3){
+                                            sendNotification();
                                         }
                                     }
 
