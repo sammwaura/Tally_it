@@ -197,24 +197,18 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
 
     public void sendNotification(){
 
-        Intent intent = new Intent(this, LowstockActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,0);
-
-        //Instance
-
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.tallyit)
                 .setContentTitle("Low Stock")
-                .setContentText("Stock below 3 products")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+                .setContentText("Stock below 3 products");
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify();
-        notificationManager.notify(001, builder.build());
+        Intent notificationIntent = new Intent(this, LowstockActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
 
+        //Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
         }
 
 
