@@ -129,6 +129,7 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
 
                                         int quantityNum = Integer.parseInt(quantity);
                                         if(quantityNum<3){
+                                            System.out.println("##$#$#$###$##"+quantityNum);
                                             sendNotification();
                                         }
                                     }
