@@ -70,8 +70,9 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
     private NiftyDialogBuilder dialogBuilder;
     private List<String> dataset1;
     String categoryName,categoryId;
-    private String CHANNEL_ID;
      String lowStock = "";
+    private static final String CHANNEL_ID = "Low_stock notifications";
+    private final int NOTIFICATION_ID =001 ;
 
 
     @Override
@@ -93,10 +94,13 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
 
     }
 
+
+
     protected void onResume() {
         super.onResume();
         getAllLowStock();
     }
+    
 
     private void getAllLowStock() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, get_low_stock,
@@ -128,8 +132,7 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
                                         stock.add(new Stock(id, name,quantity,metric,category, buying_price));
 
                                         int quantityNum = Integer.parseInt(quantity);
-                                        if(quantityNum<3){
-                                            System.out.println("##$#$#$###$##"+quantityNum);
+                                        if (quantityNum<3){
                                             sendNotification();
                                         }
                                     }
@@ -196,7 +199,7 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
     }
 
     public void sendNotification(){
-
+        createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.tallyit)
                 .setContentTitle("Low Stock")
@@ -209,7 +212,24 @@ public  class LowstockActivity extends AppCompatActivity  implements StockIObser
         //Add as notification
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());
-        }
+    }
+
+    private void createNotificationChannel(){
+            if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+
+                CharSequence name = "LowStock Notifications";
+                String description = "Include all LowStock notification";
+                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+                NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name,importance);
+                notificationChannel.setDescription(description);
+                NotificationManager manager =(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                manager.createNotificationChannel(notificationChannel);
+
+                }
+    }
+
+
 
 
     private void initializeData() {

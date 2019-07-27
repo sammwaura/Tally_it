@@ -22,4 +22,5 @@
     <string name="delete">delete</string>
     <string name="channel_name" />
     <string name="channel_description" />
+    <string name="menu_refresh" />
 </resources>
