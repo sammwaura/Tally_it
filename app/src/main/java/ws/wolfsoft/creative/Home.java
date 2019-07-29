@@ -102,8 +102,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public List<Creditor> creditors;
     CreditorAdapter adapter;
     private RecyclerView rv;
-    private static final String CHANNEL_ID = "Pay Loan";
-    private final int NOTIFICATION_ID = 001;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -703,11 +702,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                                         String amount = row.getString("amount");
                                         String business_id = row.getString("business_id");
                                         creditors.add(new Creditor(id, name, amount, business_id));
-
-                                        int amountDue = Integer.parseInt(amount);
-                                        if (amountDue<=3){
-                                            sendNotification();
-                                        }
                                     }
 
                                     initializeData();
@@ -762,36 +756,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         //Adding request to the queue
         requestQueue.add(stringRequest);
     }
-    public void sendNotification(){
-        createNotificationChannel();
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.tallyit)
-                .setContentTitle("Pay Loan")
-                .setContentText("Loan to be paid in 3days");
 
-        Intent notificationIntent = new Intent(this, LowstockActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(contentIntent);
-
-        //Add as notification
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
-    }
-
-    private void createNotificationChannel(){
-        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
-
-            CharSequence name = "Pay Loan";
-            String description = "Pay Loan within 3 days";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name,importance);
-            notificationChannel.setDescription(description);
-            NotificationManager manager =(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            manager.createNotificationChannel(notificationChannel);
-
-        }
-    }
 
 
     @Override
